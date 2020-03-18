@@ -1,13 +1,12 @@
 # graph-react-sigmajs
 
-First of all, install **nodejs and yarn** on your computer.
+First of all, install **nodejs and yarn** on your computer. :sun_with_face:
 
 Then:
 - Clone the project repository.
 - Go to the folder via terminal and run `yarn`. Every dependency will be installed properly.
 - After the installation, run `yarn start` 
-- That's it!
-
+- That's it! :shipit:
 <br><br>
 
 ## Available Scripts
