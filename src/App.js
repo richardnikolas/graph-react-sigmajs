@@ -1,25 +1,37 @@
 import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import { Provider } from "react-redux";
+import { ConnectedRouter } from "connected-react-router";
+import { Switch, Route } from "react-router-dom";
+import configureStore, { history } from "./store";
+import { makeStyles } from "@material-ui/core/styles";
+import ReactHome from "./components/ReactHome";
+import SigmaBasic from "./components/SigmaBasic";
+import { routes } from "./shared/routes";
+
+const useStyles = makeStyles({
+  root: {
+    position: "relative",
+    overflowX: "hidden",
+    height: "100%"
+  }
+});
+
+const store = configureStore();
 
 function App() {
+  const classes = useStyles();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <div className={classes.root}>
+        <ConnectedRouter history={history}>
+          <Switch>
+            <Route exact path={routes.home.path} render={ReactHome} />
+            <Route exact path={routes.sigma.path} render={SigmaBasic} />
+          </Switch>
+        </ConnectedRouter>
+      </div>
+    </Provider>
   );
 }
 
